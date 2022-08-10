@@ -1,4 +1,6 @@
 /**
+ * Author: Karl Frederick Roldan
+ * 
  * I will not be using any libraries for this sketch. The `timer0` 
  * of Arduino Mega 2560 enables us to have an accurate time to 50 days
  * when used with `millis()`. Let's leverage on this fact. Machine time
@@ -76,12 +78,12 @@ class Motor {
     }
   private:
     /* The timer is a struct that contains information about one of the three timers. */
-    struct Timer {        // I'm just checking for struct padding.
-      ulong time_on;      // 32 bits
-      ulong time_off;     // 32 bits
-      ulong last_update;  // 32 bits
-      int pin;            // 16 bits
-      bool is_on;         // A flag
+    struct Timer {
+      ulong time_on;      // how long will the timer stay on?
+      ulong time_off;     // how long will the timer stay off?
+      ulong last_update;  // when was the last time the timer was last updated?
+      int pin;            // which pin is the timer working on?
+      bool is_on;         // is the LOAD currently turned on?
       Timer(ulong on, ulong off, int _pin) 
         : time_on{on}, time_off {off}, is_on {false}, pin {_pin}, last_update {0} {}
 
